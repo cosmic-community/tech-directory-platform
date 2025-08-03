@@ -52,14 +52,23 @@ export default function CosmicBadge({ bucketSlug }: CosmicBadgeProps) {
         href={`https://www.cosmicjs.com?utm_source=bucket_${bucketSlug}&utm_medium=referral&utm_campaign=app_badge&utm_content=built_with_cosmic`}
         target="_blank"
         rel="noopener noreferrer"
-        className="flex items-center gap-2 text-gray-800 text-sm font-medium no-underline"
-        onMouseEnter={(e) => e.currentTarget.parentElement!.style.backgroundColor = '#f9fafb'}
-        onMouseLeave={(e) => e.currentTarget.parentElement!.style.backgroundColor = 'white'}
+        className="flex items-center gap-2 text-gray-800 hover:text-gray-800 text-sm font-medium no-underline"
+        style={{ textDecoration: 'none' }}
+        onMouseEnter={(e) => {
+          const parent = e.currentTarget.parentElement;
+          if (parent) parent.style.backgroundColor = '#f9fafb';
+        }}
+        onMouseLeave={(e) => {
+          const parent = e.currentTarget.parentElement;
+          if (parent) parent.style.backgroundColor = 'white';
+        }}
       >
         <img 
           src="https://cdn.cosmicjs.com/b67de7d0-c810-11ed-b01d-23d7b265c299-logo508x500.svg" 
           alt="Cosmic Logo" 
           className="w-5 h-5"
+          width="20"
+          height="20"
         />
         Built with Cosmic
       </a>
